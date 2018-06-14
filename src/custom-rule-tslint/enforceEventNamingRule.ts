@@ -1,8 +1,8 @@
-import * as ts from 'typescript';
-import * as Lint from 'tslint';
+import * as ts from "typescript";
+import * as Lint from "tslint";
 
 export class Rule extends Lint.Rules.AbstractRule {
-    public static FAILURE_STRING = 'Events must end with Event...';
+    public static FAILURE_STRING = "Events must end with Event...";
 
     public apply(sourceFile: ts.SourceFile): Lint.RuleFailure[] {
         return this.applyWithWalker(new EnforceEventNamingWalker(sourceFile, this.getOptions()));
@@ -15,11 +15,11 @@ class EnforceEventNamingWalker extends Lint.RuleWalker {
         // create a failure at the current position
 
         // console.log('Got ClassDeclaration', node);
-        console.log('Got decorators', node.decorators);
+        console.log("Got decorators", node.decorators && node.decorators[0].expression["expression"].escapedText.toString());
 
         const className = node.name && node.name.escapedText;
-        console.log('Got className:', className);
-        if (className && className.toString().indexOf('Event') === -1) {
+        console.log("Got className:", className);
+        if (className && className.toString().indexOf("Event") === -1) {
             this.addFailure(this.createFailure(node.getStart(), node.getWidth(), Rule.FAILURE_STRING));
         }
 

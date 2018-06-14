@@ -32,7 +32,7 @@ var EnforceEventNamingWalker = /** @class */ (function (_super) {
     EnforceEventNamingWalker.prototype.visitClassDeclaration = function (node) {
         // create a failure at the current position
         // console.log('Got ClassDeclaration', node);
-        console.log('Got decorators', node.decorators);
+        console.log('Got decorators', node.decorators && node.decorators[0].expression['expression'].escapedText.toString());
         var className = node.name && node.name.escapedText;
         console.log('Got className:', className);
         if (className && className.toString().indexOf('Event') === -1) {
