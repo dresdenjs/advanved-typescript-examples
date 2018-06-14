@@ -1,7 +1,11 @@
 {
   "rulesDirectory": [
+    "src/custom-rule-tslint"
+
   ],
   "rules": {
+    "enforce-event-naming": true,
+    "no-imports": false,
     "arrow-return-shorthand": true,
     "callable-types": true,
     "class-name": true,

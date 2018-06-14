@@ -2,6 +2,7 @@ export class Human {
 
   eat(): void {}
   walk(): void {}
+  // think(): void {}
 
 }
 
